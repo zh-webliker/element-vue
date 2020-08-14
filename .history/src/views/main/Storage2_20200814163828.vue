@@ -48,7 +48,7 @@
             status: 'finished'
           }
         ],
-        isfileMeetConditions: true,
+        fileTpeStatus: true,
         isBeforeUpload: false
       }
     },
@@ -58,11 +58,11 @@
         const fileNoMoreThan2m = file.size / 1024 / 1024 < 2
         if (!fileType) {
           this.$message.error('上传文件只能是docxdoc格式!');
-          this.isfileMeetConditions = fileType && fileNoMoreThan2m
+          this.fileTpeStatus = fileType && fileNoMoreThan2m
         }
         if (!fileNoMoreThan2m) {
           this.$message.error('上传文件大小不能超过2M');
-          this.isfileMeetConditions = fileType && fileNoMoreThan2m
+          this.fileTpeStatus = fileType && fileNoMoreThan2m
         }
         this.isBeforeUpload = true
         return fileType && fileNoMoreThan2m
@@ -73,7 +73,7 @@
         }
       },
       beforeRemoveFile () {
-        if (this.isfileMeetConditions) {
+        if (this.fileTpeStatus) {
           return new Promise((resolve, reject) => {
             this.$confirm('是否移除该文件?', '提示', {
               confirmButtonText: '确定',
@@ -94,13 +94,13 @@
             })
           })
         }
-        this.isfileMeetConditions = true
+        this.fileTpeStatus = true
         this.isBeforeUpload = false
       },
       changeFile (file, fileList) {
         console.log(file, fileList)
         console.log('change')
-        if (this.isfileMeetConditions && this.isBeforeUpload) {
+        if (this.fileTpeStatus && this.isBeforeUpload) {
           console.log('change enter')
           // this.fileList = []
           // this.fileList.push(file)
@@ -110,7 +110,7 @@
       },
       onprogressfile () {
       //   console.log(file, fileList)
-      //   // if (this.isfileMeetConditions && this.isBeforeUpload) {
+      //   // if (this.fileTpeStatus && this.isBeforeUpload) {
       //   //   this.fileList = []
       //   //   this.fileList.push(file)
       //   //   this.isBeforeUpload = false

@@ -5,17 +5,17 @@
     <p>时间：{{time}} || {{getTime}}</p>
     <p>--------------------------------</p> -->
     <div>
-      <el-isBeforeUpload
-        class="isBeforeUpload-demo"
+      <el-upload
+        class="upload-demo"
         action="https://jsonplaceholder.typicode.com/posts/"
-        :before-isBeforeUpload="beforeUploadFille"
+        :before-upload="beforeUploadFille"
         :on-success='successUploadFilleFille'
         :before-remove='beforeRemoveFile'
         :on-change='changeFile'
         :file-list="fileList">
         <el-button size="small" type="primary">点击上传</el-button>
         <div slot="tip" class="el-upload__tip">只能上传doc/docx文件，且不超过2M</div>
-      </el-isBeforeUpload>
+      </el-upload>
     </div>
   </div>
 </template>
@@ -48,24 +48,25 @@
             status: 'finished'
           }
         ],
-        isfileMeetConditions: true,
-        isBeforeUpload: false
+        fileTpeStatus: true,
+        upload: false
       }
     },
     methods: {
       beforeUploadFille (file) {
         const fileType = file.name.match(/\.(\S*)/)[1] === 'docx' || file.name.match(/\.(\S*)/)[1] === 'doc'
-        const fileNoMoreThan2m = file.size / 1024 / 1024 < 2
+        const fileLimit = file.size / 1024 / 1024 < 2
         if (!fileType) {
           this.$message.error('上传文件只能是docxdoc格式!');
-          this.isfileMeetConditions = fileType && fileNoMoreThan2m
+          this.fileTpeStatus = fileType && fileLimit
         }
-        if (!fileNoMoreThan2m) {
+        if (!fileLimit) {
           this.$message.error('上传文件大小不能超过2M');
-          this.isfileMeetConditions = fileType && fileNoMoreThan2m
+          this.fileTpeStatus = fileType && fileLimit
         }
-        this.isBeforeUpload = true
-        return fileType && fileNoMoreThan2m
+        this.upload = true
+        console.log('beforeUpload')
+        return fileType && fileLimit
       },
       successUploadFilleFille (res) {
         if (res.id === 101) {
@@ -73,7 +74,8 @@
         }
       },
       beforeRemoveFile () {
-        if (this.isfileMeetConditions) {
+        console.log(this.fileTpeStatus)
+        if (this.fileTpeStatus) {
           return new Promise((resolve, reject) => {
             this.$confirm('是否移除该文件?', '提示', {
               confirmButtonText: '确定',
@@ -94,26 +96,26 @@
             })
           })
         }
-        this.isfileMeetConditions = true
-        this.isBeforeUpload = false
+        this.fileTpeStatus = true
+        this.upload = false
       },
       changeFile (file, fileList) {
         console.log(file, fileList)
         console.log('change')
-        if (this.isfileMeetConditions && this.isBeforeUpload) {
+        if (this.fileTpeStatus && this.upload) {
           console.log('change enter')
           // this.fileList = []
           // this.fileList.push(file)
           fileList = fileList.slice(-1)
-          this.isBeforeUpload = false
+          this.upload = false
         }
       },
       onprogressfile () {
       //   console.log(file, fileList)
-      //   // if (this.isfileMeetConditions && this.isBeforeUpload) {
+      //   // if (this.fileTpeStatus && this.upload) {
       //   //   this.fileList = []
       //   //   this.fileList.push(file)
-      //   //   this.isBeforeUpload = false
+      //   //   this.upload = false
       //   // }
       }
     }
