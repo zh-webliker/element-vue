@@ -2,8 +2,6 @@
 
 vue + element + openlayers5
 
-湖南成功软件开发有限公司
-
 ## Project setup
 ```
 npm install
