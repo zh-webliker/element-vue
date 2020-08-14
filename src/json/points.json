@@ -1,0 +1,9 @@
+[
+  {"objectid":1, "longa": 102.7882, "lati": 24.8958, "mc": "点位名称1"},
+  {"objectid":2, "longa": 102.6385, "lati": 24.9899, "mc": "点位名称2"},
+  {"objectid":3, "longa": 102.6605, "lati": 24.9349, "mc": "点位名称3"},
+  {"objectid":4, "longa": 102.6481, "lati": 24.8141, "mc": "点位名称4"},
+  {"objectid":5, "longa": 102.6038, "lati": 24.6987, "mc": "点位名称5"},
+  {"objectid":6, "longa": 102.7099, "lati": 24.6754, "mc": "点位名称6"},
+  {"objectid":7, "longa": 102.7072, "lati": 24.7262, "mc": "点位名称7"}
+]

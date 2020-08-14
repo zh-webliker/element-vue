@@ -1,0 +1,139 @@
+
+
+/*theme*/
+$primaryColor: #0065cb;
+$primaryTextColor: white;
+$primaryBgColor: #004264;
+$bgColor: white;
+
+/*global*/
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.page {
+  position: absolute;
+  top: 56px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: aliceblue;
+}
+
+
+/*body*/
+body{
+  padding: 0; margin: 0;
+  font-family: 'Consolas', 'Microsoft YaHei UI';
+  font-size: 14px;
+}
+
+/*header*/
+header {
+  background-color: $primaryBgColor;
+  color: $primaryTextColor;
+  padding: 0 16px;
+  position: relative;
+  height: 56px;
+
+  h1 {
+    margin: 0;
+    line-height: 56px;
+  }
+
+  nav {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+
+    a {
+      display: inline-flex;
+      width: 80px;
+      height: 100%;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+
+      &:hover{
+        background-color: rgba(255,255,255,0.1);
+      }
+
+      &.router-link-active{
+        background-color: rgba(255,255,255,0.4);
+      }
+    }
+  }
+}
+
+/*left navbar*/
+.left-nav {
+  position: absolute;
+  width: 160px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  background-color: white;
+  //color: $primaryTextColor;
+
+
+  a {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 50px;
+    cursor: pointer;
+
+    &:hover{
+      //background-color: rgba(100,100,100,0.1);
+      color: rgb(100,100,100);
+    }
+    &.router-link-active{
+      //background-color: rgba(0,0,0,0.1);
+      color: $primaryColor;
+    }
+    &:after{
+      content: "";
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 1px;
+      //transform: scaleY(0.5);
+      background-color: aliceblue;
+    }
+
+    i {
+      line-height: 50px;
+      width: 40px;
+      text-align: center;
+      font-size: 24px;
+    }
+    span {
+      line-height: 50px;
+      font-size: 14px;
+    }
+
+  }
+}
+
+
+.page-content {
+  position: absolute;
+  left: 160px;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  //background-color: aliceblue;
+  margin: 16px;
+  padding: 16px;
+  background-color: white;
+  overflow-y: auto;
+  overflow-x: auto;
+
+  article{
+    padding-bottom: 80px;
+  }
+}

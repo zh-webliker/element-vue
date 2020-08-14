@@ -1,0 +1,5 @@
+查询区县分类
+http://10.220.23.2:8099/rest/video/vsCollect/queryForVsCollectionTree
+
+查询该区县下的视频站点。id是上面那个接口的区县id
+http://10.220.23.2:8099/rest/video/vsCollect/queryForCamera?pageNo=1&pageSize=10000&id=fb4eb9483dc540a7ae0469276d215961
