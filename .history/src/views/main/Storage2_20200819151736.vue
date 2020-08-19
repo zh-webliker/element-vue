@@ -8,13 +8,11 @@
       <el-upload
         class="isBeforeUpload-demo"
         action="https://jsonplaceholder.typicode.com/posts/"
-        :before-upload="beforeUploadFille"
+        :before-isBeforeUpload="beforeUploadFille"
         :on-success='successUploadFilleFille'
         :before-remove='beforeRemoveFile'
         :on-change='changeFile'
-        :file-list="fileList"
-        :on-progress='handleProgress'
-        ref='upload'>
+        :file-list="fileList">
         <el-button size="small" type="primary">点击上传</el-button>
         <div slot="tip" class="el-upload__tip">只能上传doc/docx文件，且不超过2M</div>
       </el-upload>
@@ -24,7 +22,6 @@
 
 <script>
   import {mapState, mapGetters} from 'vuex';
-  import { formatSingle } from 'highcharts';
 
   export default {
     name: "Storage2",
@@ -68,10 +65,6 @@
           this.isfileMeetConditions = fileType && fileNoMoreThan2m
         }
         this.isBeforeUpload = true
-        if (fileType && fileNoMoreThan2m) {
-          // this.$refs.upload.uploadFiles = []
-          // this.$refs.upload.uploadFiles.push(file)
-        }
         return fileType && fileNoMoreThan2m
       },
       successUploadFilleFille (res) {
@@ -105,19 +98,23 @@
         this.isBeforeUpload = false
       },
       changeFile (file, fileList) {
+        console.log(file, fileList)
+        console.log('change')
         if (this.isfileMeetConditions && this.isBeforeUpload) {
-          // fileList = fileList.slice(-1)
-          // this.isBeforeUpload = false
-          // console.log(file)
-          // this.$refs.upload.uploadFiles.push(file)
+          console.log('change enter')
+          // this.fileList = []
+          // this.fileList.push(file)
+          fileList = fileList.slice(-1)
+          this.isBeforeUpload = false
         }
       },
-      handleProgress (event, file, fileList) {
-        console.log(event, file, fileList)
-        if (this.isfileMeetConditions) {
-          this.$refs.upload.uploadFiles = []
-          this.$refs.upload.uploadFiles.push(file)
-        }
+      onprogressfile () {
+      //   console.log(file, fileList)
+      //   // if (this.isfileMeetConditions && this.isBeforeUpload) {
+      //   //   this.fileList = []
+      //   //   this.fileList.push(file)
+      //   //   this.isBeforeUpload = false
+      //   // }
       }
     }
   }

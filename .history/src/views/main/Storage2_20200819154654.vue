@@ -13,7 +13,6 @@
         :before-remove='beforeRemoveFile'
         :on-change='changeFile'
         :file-list="fileList"
-        :on-progress='handleProgress'
         ref='upload'>
         <el-button size="small" type="primary">点击上传</el-button>
         <div slot="tip" class="el-upload__tip">只能上传doc/docx文件，且不超过2M</div>
@@ -24,7 +23,6 @@
 
 <script>
   import {mapState, mapGetters} from 'vuex';
-  import { formatSingle } from 'highcharts';
 
   export default {
     name: "Storage2",
@@ -68,10 +66,6 @@
           this.isfileMeetConditions = fileType && fileNoMoreThan2m
         }
         this.isBeforeUpload = true
-        if (fileType && fileNoMoreThan2m) {
-          // this.$refs.upload.uploadFiles = []
-          // this.$refs.upload.uploadFiles.push(file)
-        }
         return fileType && fileNoMoreThan2m
       },
       successUploadFilleFille (res) {
@@ -108,15 +102,8 @@
         if (this.isfileMeetConditions && this.isBeforeUpload) {
           // fileList = fileList.slice(-1)
           // this.isBeforeUpload = false
-          // console.log(file)
-          // this.$refs.upload.uploadFiles.push(file)
-        }
-      },
-      handleProgress (event, file, fileList) {
-        console.log(event, file, fileList)
-        if (this.isfileMeetConditions) {
-          this.$refs.upload.uploadFiles = []
-          this.$refs.upload.uploadFiles.push(file)
+          console.log(this.$refs.upload.uploadFiles)
+          this.$refs.upload.uploadFiles.slice(1)
         }
       }
     }

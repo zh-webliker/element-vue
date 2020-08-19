@@ -69,7 +69,7 @@
         }
         this.isBeforeUpload = true
         if (fileType && fileNoMoreThan2m) {
-          // this.$refs.upload.uploadFiles = []
+          this.$refs.upload.uploadFiles = []
           // this.$refs.upload.uploadFiles.push(file)
         }
         return fileType && fileNoMoreThan2m
@@ -113,9 +113,7 @@
         }
       },
       handleProgress (event, file, fileList) {
-        console.log(event, file, fileList)
-        if (this.isfileMeetConditions) {
-          this.$refs.upload.uploadFiles = []
+        if (this.isfileMeetConditions && this.isBeforeUpload) {
           this.$refs.upload.uploadFiles.push(file)
         }
       }
