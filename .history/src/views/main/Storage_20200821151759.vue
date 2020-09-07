@@ -52,8 +52,6 @@
       }
       let group = new Group()
       new Parent('张三妈妈', group)
-      new Parent('李四爸爸', group)
-      new Parent('王五爷爷', group)
       group.setMesssage('来学校开家长会')
     },
     mounted(){

@@ -25,7 +25,7 @@
 
 <script>
   import {mapState, mapGetters} from 'vuex';
-  import { formatSingle } from 'highcharts';
+  // import { formatSingle } from 'highcharts';
 
   export default {
     name: "Storage2",
@@ -75,10 +75,10 @@
         }
         return fileType && fileNoMoreThan2m
       },
-      successUploadFilleFille (res, file) {
+      successUploadFilleFille (res) {
         if (this.isfileMeetConditions) {
-          this.$refs.upload.uploadFiles = []
-          this.$refs.upload.uploadFiles.push(file)
+          // this.$refs.upload.uploadFiles = []
+          // this.$refs.upload.uploadFiles.push(file)
         }
         if (res.id === 101) {
           this.$message.success('上传文件成功')
@@ -120,11 +120,12 @@
         //   // this.$refs.upload.uploadFiles.push(file)
         // }
       },
-      handleProgress () {
-        // if (this.isfileMeetConditions) {
-        //   this.$refs.upload.uploadFiles = []
-        //   this.$refs.upload.uploadFiles.push(file)
-        // }
+      handleProgress (event, file) {
+        if (this.isfileMeetConditions) {
+          this.$refs.upload.uploadFiles = []
+          this.fileList = []
+          this.$refs.upload.uploadFiles.push(file)
+        }
       },
     }
   }

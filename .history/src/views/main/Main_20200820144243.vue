@@ -14,7 +14,7 @@
         <i class="material-icons">compare_arrows</i>
         <span>组件使用</span>
       </router-link>
-      <router-link to="Tree">
+      <router-link to="Requesting">
         <i class="material-icons">wifi_tethering</i>
         <span>树</span>
       </router-link>
@@ -24,7 +24,7 @@
       </router-link>
       <router-link to="Deliver">
         <i class="material-icons">view_quilt</i>
-        <span>渲染函数</span>
+        <span>组件传值</span>
       </router-link>
       <router-link to="Charts">
         <i class="material-icons">pie_chart</i>

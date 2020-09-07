@@ -10,9 +10,9 @@
         <i class="material-icons">insert_emoticon</i>
         <span>图标</span>
       </router-link>
-      <router-link to="Requesting">
+      <router-link to="Tree">
         <i class="material-icons">wifi_tethering</i>
-        <span>请求</span>
+        <span>树</span>
       </router-link>
       <router-link to="Storage">
         <i class="material-icons">compare_arrows</i>

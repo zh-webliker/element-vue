@@ -31,9 +31,9 @@ export default new Router({
           component: ()=> import('./views/main/Icon.vue')
         },
         {
-          name: "Tree",
-          path: "/Main/Tree",
-          component: ()=> import('./views/main/Tree.vue')
+          name: "Requesting",
+          path: "/Main/Requesting",
+          component: ()=> import('./views/main/Requesting.vue')
         },
         {
           name: "Storage",

@@ -5,7 +5,7 @@
         Hello world!
       </a>
     </h1>
-    <applyJsx :level='level'></applyJsx>
+    <applyJsx></applyJsx>
   </div>
 </template>
 
@@ -18,7 +18,6 @@
     },
     data(){
       return {
-        level: 1
       }
     },
     methods: {

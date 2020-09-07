@@ -84,9 +84,6 @@
           this.$message.success('上传文件成功')
         }
       },
-      handleError () {
-        this.$message.erroe('上传文件失败')
-      },
       beforeRemoveFile () {
         if (this.isfileMeetConditions) {
           return new Promise((resolve, reject) => {
@@ -112,20 +109,25 @@
         this.isfileMeetConditions = true
         this.isBeforeUpload = false
       },
-      changeFile () {
-        // if (this.isfileMeetConditions && this.isBeforeUpload) {
-        //   // fileList = fileList.slice(-1)
-        //   // this.isBeforeUpload = false
-        //   // console.log(file)
-        //   // this.$refs.upload.uploadFiles.push(file)
-        // }
+      changeFile (file, fileList) {
+        console.log(file, fileList)
+        if (this.isfileMeetConditions && this.isBeforeUpload) {
+          // fileList = fileList.slice(-1)
+          // this.isBeforeUpload = false
+          // console.log(file)
+          // this.$refs.upload.uploadFiles.push(file)
+        }
       },
-      handleProgress () {
+      handleProgress (event, file, fileList) {
+        console.log(event, file, fileList)
         // if (this.isfileMeetConditions) {
         //   this.$refs.upload.uploadFiles = []
         //   this.$refs.upload.uploadFiles.push(file)
         // }
       },
+      handleError () {
+        this.$message.erroe('上传文件失败')
+      }
     }
   }
 </script>
