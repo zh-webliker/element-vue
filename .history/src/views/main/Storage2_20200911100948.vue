@@ -57,19 +57,29 @@
       }
     },
     created () {
-      // this.redutionArray([1,2,[3,4],[5,[7,8,[9]]],10])
+
     },
     methods: {
-      redutionArray (array) {
-        for (let i = 0; i < array.length; i++) {
-          if (Array.isArray(array[i])) {
-            array = Array.prototype.concat.apply([], array)
-            for (let j = 0; i < array.length; j++) {
-              this.redutionArray(array)
-            }
+      // let children = [1, 2, 3, [4, 5, 6], 7, 8, [9, 10]];
+      // :any 可以去掉 这里是Vue通过Flow指定传入的参数类型可以是任意类型
+      simpleNormalizeChildren(children) {
+        for (let i = 0; i < children.length; i++) {
+          if (Array.isArray(children[i])) {
+            return Array.prototype.concat.apply([], children);
           }
         }
-        return array
+        return children;
+      }
+
+simpleNormalizeChildren(children); // [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      redutionArray (array) {
+          for (let i = 0; i < array.length; i++) {
+            if (Array.isArray(array[i])) {
+              this.redutionArray(array[i])
+            } else {
+
+            }
+          }
       },
       beforeUploadFille (file) {
         const fileType = file.name.match(/\.(\S*)/)[1] === 'docx' || file.name.match(/\.(\S*)/)[1] === 'doc'

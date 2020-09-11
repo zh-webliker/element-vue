@@ -25,6 +25,7 @@
 
 <script>
   import {mapState, mapGetters} from 'vuex';
+  // import { formatSingle } from 'highcharts';
 
   export default {
     name: "Storage2",
@@ -52,25 +53,10 @@
           }
         ],
         isfileMeetConditions: true,
-        isBeforeUpload: false,
-        arr: []
+        isBeforeUpload: false
       }
     },
-    created () {
-      // this.redutionArray([1,2,[3,4],[5,[7,8,[9]]],10])
-    },
     methods: {
-      redutionArray (array) {
-        for (let i = 0; i < array.length; i++) {
-          if (Array.isArray(array[i])) {
-            array = Array.prototype.concat.apply([], array)
-            for (let j = 0; i < array.length; j++) {
-              this.redutionArray(array)
-            }
-          }
-        }
-        return array
-      },
       beforeUploadFille (file) {
         const fileType = file.name.match(/\.(\S*)/)[1] === 'docx' || file.name.match(/\.(\S*)/)[1] === 'doc'
         const fileNoMoreThan2m = file.size / 1024 / 1024 < 2

@@ -57,19 +57,31 @@
       }
     },
     created () {
-      // this.redutionArray([1,2,[3,4],[5,[7,8,[9]]],10])
+      let children = [1, 2, 3, [4, [5, 6]], 7, 8, [9, 10], [11, [12, [13, 14]]]];
+      this.redutionArray(children)
+      console.log(this.arr)
+      // 用递归降维
     },
     methods: {
       redutionArray (array) {
         for (let i = 0; i < array.length; i++) {
           if (Array.isArray(array[i])) {
-            array = Array.prototype.concat.apply([], array)
-            for (let j = 0; i < array.length; j++) {
-              this.redutionArray(array)
-            }
+            this.redutionArray(array[i])
+          } else {
+            this.arr.push(array[i])
           }
         }
-        return array
+        return this.arr
+      },
+      singleIsArray (e) {
+        if (Array.isArray(e)) {
+          for (let i = 0; i < e.length; i++) {
+            this.singleIsArray(e[i])
+          }
+        } else {
+          this.arr.push(e)
+        }
+        return this.arr
       },
       beforeUploadFille (file) {
         const fileType = file.name.match(/\.(\S*)/)[1] === 'docx' || file.name.match(/\.(\S*)/)[1] === 'doc'

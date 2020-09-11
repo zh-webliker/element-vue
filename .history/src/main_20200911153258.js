@@ -6,6 +6,8 @@ import store from './store/store'
 import './style/style.scss'
 import 'material-icons'
 
+// import upperFirst from 'lodash/upperFirst'
+// import camelCase from 'lodash/camelCase'
 /***
  * 初始化axios
  * https://www.kancloud.cn/yunye/axios/234845
@@ -26,9 +28,6 @@ Vue.use(Element);
 
 
 Vue.config.productionTip = false;
-
-// import upperFirst from 'lodash/upperFirst'
-// import camelCase from 'lodash/camelCase'
 
 // const requireComponent = require.context(
 //   // 其组件目录的相对路径

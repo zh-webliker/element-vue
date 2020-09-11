@@ -52,24 +52,27 @@
           }
         ],
         isfileMeetConditions: true,
-        isBeforeUpload: false,
-        arr: []
+        isBeforeUpload: false
       }
     },
     created () {
-      // this.redutionArray([1,2,[3,4],[5,[7,8,[9]]],10])
+      let children = [1, 2, 3, [4, 5, 6], 7, 8, [9, 10]];
+      // 用递归降维
+      for (let i = 0; i < children.length; i++) {
+        this.singleIsArray(children[i])
+      }
     },
     methods: {
-      redutionArray (array) {
-        for (let i = 0; i < array.length; i++) {
-          if (Array.isArray(array[i])) {
-            array = Array.prototype.concat.apply([], array)
-            for (let j = 0; i < array.length; j++) {
-              this.redutionArray(array)
-            }
+      singleIsArray (e) {
+        let arr = []
+        if (Array.isArray(e)) {
+          for (let i = 0; i < e.length; i++) {
+            this.singleIsArray(e[i])
           }
+        } else {
+          arr.push(e)
         }
-        return array
+        return arr
       },
       beforeUploadFille (file) {
         const fileType = file.name.match(/\.(\S*)/)[1] === 'docx' || file.name.match(/\.(\S*)/)[1] === 'doc'

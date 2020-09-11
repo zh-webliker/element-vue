@@ -6,8 +6,7 @@
     <Basebutton type='warning'></Basebutton>
     <Basebutton type='danger'></Basebutton>
     <Basetitle>
-      <slot><h1>我是标题</h1></slot> 
-      <!-- slot中可以插入html代码 -->
+      <slot><h1>我是标题</h1></slot>
     </Basetitle>
   </div>
 </template>
