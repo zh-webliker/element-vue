@@ -57,7 +57,7 @@ export default new Router({
         },
         {
           name: "dailyQuestion",
-          path: "/Main/dailyQuestion",
+          path: "/dailyQuestion",
           component: ()=> import('./views/main/dailyQuestion.vue'),
           children: [
             {

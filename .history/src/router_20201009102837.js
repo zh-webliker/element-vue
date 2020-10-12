@@ -62,13 +62,8 @@ export default new Router({
           children: [
             {
               name: "lazyLoadingInmg",
-              path: "/lazyLoadingInmg",
-              component: ()=> import('./components/dailyQuestion/lazyLoadingInmg.vue')
-            },
-            {
-              name: "debounce",
-              path: "/debounce",
-              component: ()=> import('./components/dailyQuestion/debounce.vue')
+              path: "/Main/dailyQuestion/lazyLoadingInmg",
+              component: ()=> import('./views')
             },
           ]
         }

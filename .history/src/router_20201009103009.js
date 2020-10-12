@@ -65,11 +65,6 @@ export default new Router({
               path: "/lazyLoadingInmg",
               component: ()=> import('./components/dailyQuestion/lazyLoadingInmg.vue')
             },
-            {
-              name: "debounce",
-              path: "/debounce",
-              component: ()=> import('./components/dailyQuestion/debounce.vue')
-            },
           ]
         }
       ]

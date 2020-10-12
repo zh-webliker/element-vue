@@ -30,7 +30,7 @@
         <i class="material-icons">pie_chart</i>
         <span>图表</span>
       </router-link>
-      <router-link to="dailyQuestion">
+      <router-link to="lazyLoadingInmg">
         <i class="material-icons">insert_emoticon</i>
         <span>日问</span>
       </router-link>

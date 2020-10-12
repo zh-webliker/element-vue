@@ -32,7 +32,7 @@
       </router-link>
       <router-link to="dailyQuestion">
         <i class="material-icons">insert_emoticon</i>
-        <span>日问</span>
+        <span>图表</span>
       </router-link>
     </nav>
 
